@@ -1,4 +1,5 @@
-# Menú del restaurante
+
+   # MENÚ DEL RESTAURANTE
 
 menu = [
     ["Hamburguesa", "Comida rápida", 18000],
@@ -9,33 +10,31 @@ menu = [
     ["Ensalada César", "Saludable", 15000]
 ]
 
+# Mostrar la matriz original
 print(menu)
-print("\nMENÚ DEL RESTAURANTE")
 
-for producto in menu:
-    print(producto)
-    print("\nMENÚ DEL RESTAURANTE")
+print("\nMENÚ DEL RESTAURANTE")
 print("----------------------")
 
+# Mostrar el menú de forma ordenada
 for producto in menu:
     print("Producto:", producto[0])
     print("Categoría:", producto[1])
-    print("Precio Base:", producto[2])
+    print("Precio:", producto[2])
     print("----------------------")
-    # Variables de promoción
 
+# Variables para promoción
 categoria_objetivo = "Comida rápida"
-umbral_precio = 15000
 descuento = 15
+
 print("\nPROMOCIONES")
 print("----------------------")
 
+# Aplicar descuento solo a una categoría
 for producto in menu:
 
     if producto[1] == categoria_objetivo:
-        nuevo_precio = producto[2] - 15
-
+        nuevo_precio = producto[2] * (1 - descuento / 100)
+        print(producto[0], "->", int(nuevo_precio))
     else:
-        nuevo_precio = producto[2]
-
-    print(producto[0], nuevo_precio)
+        print(producto[0], "->", producto[2])
