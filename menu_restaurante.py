@@ -1,40 +1,52 @@
 
-   # MENÚ DEL RESTAURANTE
+# función
+def calcular_precio_final(precio_base, descuento):
+    precio_final = precio_base * (1 - descuento / 100)
+    return precio_final
 
+
+# menú del restaurante
 menu = [
     ["Hamburguesa", "Comida rápida", 18000],
     ["Pizza", "Comida rápida", 25000],
+    ["Perro Caliente", "Comida rápida", 12000],
+    ["Salchipapa", "Comida rápida", 16000],
     ["Jugo Natural", "Bebida", 8000],
     ["Café Latte", "Bebida", 7000],
+    ["Limonada", "Bebida", 6000],
     ["Cheesecake", "Postre", 12000],
+    ["Brownie", "Postre", 9000],
     ["Ensalada César", "Saludable", 15000]
 ]
 
-# Mostrar la matriz original
+# mostrar matriz
 print(menu)
 
 print("\nMENÚ DEL RESTAURANTE")
 print("----------------------")
 
-# Mostrar el menú de forma ordenada
+# mostrar menú
 for producto in menu:
-    print("Producto:", producto[0])
-    print("Categoría:", producto[1])
-    print("Precio:", producto[2])
-    print("----------------------")
+    print(producto[0], producto[1], producto[2])
 
-# Variables para promoción
+# variables
 categoria_objetivo = "Comida rápida"
+umbral_precio = 15000
 descuento = 15
 
 print("\nPROMOCIONES")
 print("----------------------")
 
-# Aplicar descuento solo a una categoría
+# aplicar lógica
 for producto in menu:
 
-    if producto[1] == categoria_objetivo:
-        nuevo_precio = producto[2] * (1 - descuento / 100)
-        print(producto[0], "->", int(nuevo_precio))
+    nombre = producto[0]
+    categoria = producto[1]
+    precio_base = producto[2]
+
+    if categoria == categoria_objetivo and precio_base > umbral_precio:
+        precio_final = calcular_precio_final(precio_base, descuento)
     else:
-        print(producto[0], "->", producto[2])
+        precio_final = precio_base
+
+    print(nombre, "Base:", precio_base, "Final:", int(precio_final))
